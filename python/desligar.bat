@@ -1,0 +1,1 @@
+shutdown /s /t 300 /c "Sextou! Pode descansar"
