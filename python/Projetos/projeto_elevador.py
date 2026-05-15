@@ -80,4 +80,3 @@ while True:
                 print("Descendo... Andar", andar)
                 time.sleep(2.0)
             print("Chegou no destino:", andar)
-
