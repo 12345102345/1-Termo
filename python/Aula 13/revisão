@@ -1,0 +1,171 @@
+import tkinter as tk
+from tkinter import messagebox, ttk
+from datetime import datetime
+
+
+def cadastrar_usuario():
+    nome_usuario = ent_nome_usuario.get()
+    nome_escola = cmb_nome_escola.get()
+    ano_nascimento = ent_ano_nascimento.get()
+
+    if nome_usuario == "" or nome_escola == "" or ano_nascimento == "":
+        messagebox.showwarning(
+            "Verificar Dados",
+            "Preencha todos os campos!"
+        )
+        return
+
+    try:
+        idade = datetime.now().year - int(ano_nascimento)
+
+        messagebox.showinfo(
+            "Bem-Vindo",
+            f"Olá {nome_usuario}!\n\n"
+            f"Escola: {nome_escola}\n"
+            f"Idade: {idade} anos"
+        )
+
+    except ValueError:
+        messagebox.showerror(
+            "Erro",
+            "Digite um ano de nascimento válido!"
+        )
+
+
+# Janela
+janela = tk.Tk()
+janela.title("Revisão Tkinter")
+janela.geometry("500x300")
+janela.configure(bg="white")
+
+
+# Título
+lbl_titulo = tk.Label(janela,text="Revisão Tkinter",font=("Arial", 16, "bold"),bg="white")
+lbl_titulo.grid(row=0, column=0, columnspan=2, pady=20)
+
+
+# Nome
+lbl_nome_usuario = tk.Label(janela,text="Digite seu nome:",font=("Arial", 12),bg="pink",fg="white")
+lbl_nome_usuario.grid(row=1, column=0, padx=10, pady=10)
+
+ent_nome_usuario = tk.Entry(janela,font=("Arial", 12),width=25)
+ent_nome_usuario.grid(row=1, column=1, padx=10, pady=10)
+
+
+# Escola
+lbl_nome_escola = tk.Label(janela,text="Escolha sua escola:",font=("Arial", 12),bg="pink")
+lbl_nome_escola.grid(row=2, column=0, padx=10, pady=10)
+
+cmb_nome_escola = ttk.Combobox(janela,values=["SESI5", "SESI408"],state="readonly",width=22)
+cmb_nome_escola.grid(row=2, column=1, padx=10, pady=10)
+
+
+# Ano de nascimento
+lbl_ano = tk.Label(janela,text="Ano de nascimento:",font=("Arial", 12),bg="pink")
+lbl_ano.grid(row=3, column=0, padx=10, pady=10)
+
+ent_ano_nascimento = tk.Entry(janela,font=("Arial", 12),width=25)
+ent_ano_nascimento.grid(row=3, column=1, padx=10, pady=10)
+
+
+# Botão
+btn_enviar = tk.Button(janela,text="Cadastrar Usuário",bg="pink",fg="white",width=25,command=cadastrar_usuario)
+btn_enviar.grid(row=4, column=0, columnspan=2, pady=20)
+
+
+janela.mainloop()
+
+
+
+
+Exercício
+# Crie uma aplicação que pergunte o nome e o ano de nascimento do usuário
+# Calcule a idade
+
+
+import tkinter as tk
+from tkinter import messagebox , ttk
+
+
+
+janela = tk.Tk()
+janela.title("cadastro")
+janela.geometry("500x500")
+
+lbl_titulo_aplicacao = tk.Label(janela, text="Cadastro :)", font=("Arial", 14), fg="black", bg="white")
+lbl_titulo_aplicacao.grid(row=0, column=0, pady=20, padx=20)
+
+lbl_nome_usuario = tk.Label(janela, text="Digite seu nome:", font=("Arial", 12), fg="black", bg="white")
+lbl_nome_usuario.grid(row=1,column=0, pady=20, padx=20)
+
+lbl_nascimento_usuario = tk.Label(janela, text="Digite seu ano de nascimento:", font=("Arial", 12), fg="black", bg="white")
+lbl_nascimento_usuario.grid(row=2,column=0, pady=20, padx=20)
+
+ent_nome_usuario = tk.Entry(janela, font=("Arial", 14), fg="black", width=20)
+ent_nome_usuario.grid(row=1, column=1, pady=10, padx=10)
+
+ent_nascimento_usuario = tk.Entry(janela, font=("Arial", 14), fg="black", width=20)
+ent_nascimento_usuario.grid(row=2, column=1, pady=10, padx=10)
+
+Revisão Tkinter
+
+#Biblioteca
+import tkinter as tk
+from tkinter import messagebox, ttk
+
+# DEF - Linha de bloco de função
+def cadastrar_usuario():
+    # .get em todos os componentes que irão receber informação
+
+    nome_usuario = ent_nome_usuario.get()
+    nome_escola = cmb_nome_escola.get()
+
+    if nome_usuario == "":
+        messagebox.showwarning("Verificar Dados", "Verificar os campos")
+    else:
+        messagebox.showinfo("Bem-Vindo", f"Olá usuário {nome_usuario}")
+
+
+
+
+# 0 Etapas - Janela
+janela = tk.Tk()
+janela.title("Revisão Tkinter")
+janela.geometry("500x500")
+janela.configure(bg="pink")
+
+# 1 - Etapa - Componentes
+# Labels = Rotulos e Textos antigo print
+lbl_titulo_aplicacao = tk.Label(janela, text="Revisão Tkinter :)", font=("Arial", 14), fg="black", bg="white")
+lbl_titulo_aplicacao.grid(row=0, column=0, pady=20, padx=20)
+
+lbl_nome_usuario = tk.Label(janela, text="Digite seu nome:", font=("Arial", 12), fg="black", bg="white")
+lbl_nome_usuario.grid(row=1,column=0, pady=20, padx=20)
+
+lbl_nome_escola = tk.Label(janela, text="Escolha sua Escola:", font=("Arial", 12))
+lbl_nome_escola.grid(row=2, column=0, pady=10, padx=10)
+
+# Entrys = Caixa de texto ou antigo input
+ent_nome_usuario = tk.Entry(janela, font=("Arial", 14), fg="black", width=20)
+ent_nome_usuario.grid(row=1, column=1, pady=10, padx=10)
+
+# Caixa de seleção ou combobox
+cmb_nome_escola = ttk.Combobox(janela, values=["SESI5", "SESI408"], state="readonly",width=20)
+cmb_nome_escola.grid(row=2, column=1, pady=10, padx=10)
+
+#Botões
+btn_enviar_dados = tk.Button(janela, text="Cadastrar Usuário", bg="black", fg="white", width=30, command=cadastrar_usuario)
+btn_enviar_dados.grid(row=3, column=0, pady=10, padx=10)
+
+btn_fechar_aplicacao = tk.Button(janela, text="Fechar Aplicação", width=30, command=janela.destroy)
+btn_fechar_aplicacao.grid(row=3, column=1, pady=10, padx=10)
+
+
+# 4 Etapa - Mainloop
+janela.mainloop()
+
+
+
+
+
+
