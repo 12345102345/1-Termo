@@ -2,46 +2,76 @@
 # Deve perguntar o nome da pessoa e o ano de nascimento
 
 
-import tkinter as tk
-from tkinter import messagebox, ttk
+# import tkinter as tk
+# from tkinter import messagebox, ttk
 
-janela = tk.Tk()
-janela.title("Cálculo de Idade")
-janela.geometry("1000x1000")
-janela.configure(bg="pink")
+# janela = tk.Tk()
+# janela.title("Cálculo de Idade")
+# janela.geometry("1000x1000")
+# janela.configure(bg="pink")
 
 
-def registro_pessoal():
-     nome = ent_nome.get()
-     ano_nascimento = ent_ano_nascimento.get()
+# def registro_pessoal():
+#      nome = ent_nome.get()
+#      ano_nascimento = ent_ano_nascimento.get()
 
-     if nome == "":
-         messagebox.showerror("Erro", "Por favor, insira seu nome.")
-     elif ano_nascimento == "":
-         messagebox.showerror("Erro", "Por favor, insira o ano de nascimento.")
-     else:
-         ano_nascimento = int(ano_nascimento)
-         idade = 2026 - ano_nascimento
-         messagebox.showinfo("Idade", f"{nome} tem {idade} anos.")
+#      if nome == "":
+#          messagebox.showerror("Erro", "Por favor, insira seu nome.")
+#      elif ano_nascimento == "":
+#          messagebox.showerror("Erro", "Por favor, insira o ano de nascimento.")
+#      else:
+#          ano_nascimento = int(ano_nascimento)
+#          idade = 2026 - ano_nascimento
+#          messagebox.showinfo("Idade", f"{nome} tem {idade} anos.")
 
-lbl_nome = tk.Label(janela,text="Nome:",font=("Arial", 12),bg="pink",fg="white")
-lbl_nome.grid(row=0, column=0, padx=10, pady=10)
+# lbl_nome = tk.Label(janela,text="Nome:",font=("Arial", 12),bg="pink",fg="white")
+# lbl_nome.grid(row=0, column=0, padx=10, pady=10)
 
-ent_nome = tk.Entry(janela,font=("Arial", 12),width=25)
-ent_nome.grid(row=0, column=1, padx=10, pady=10)
+# ent_nome = tk.Entry(janela,font=("Arial", 12),width=25)
+# ent_nome.grid(row=0, column=1, padx=10, pady=10)
 
-lbl_ano_nascimento = tk.Label(janela,text="Ano de Nascimento:",font=("Arial", 12),bg="pink",fg="white")
-lbl_ano_nascimento.grid(row=1, column=0, padx=10, pady=10)
+# lbl_ano_nascimento = tk.Label(janela,text="Ano de Nascimento:",font=("Arial", 12),bg="pink",fg="white")
+# lbl_ano_nascimento.grid(row=1, column=0, padx=10, pady=10)
 
-ent_ano_nascimento = tk.Entry(janela,font=("Arial", 12),width=25)
-ent_ano_nascimento.grid(row=1, column=1, padx=10, pady=10)
+# ent_ano_nascimento = tk.Entry(janela,font=("Arial", 12),width=25)
+# ent_ano_nascimento.grid(row=1, column=1, padx=10, pady=10)
 
-btn_registrar = tk.Button(janela,text="Registrar Pessoa",bg="black",fg="white",width=25,command=registro_pessoal)
+# btn_registrar = tk.Button(janela,text="Registrar Pessoa",bg="black",fg="white",width=25,command=registro_pessoal)
 
-btn_registrar = tk.Button(janela,text="Registrar Pessoa",bg="black",fg="white",width=25,command=registro_pessoal)
-btn_registrar.grid(row=2, column=0, columnspan=2, pady=20)
+# btn_registrar = tk.Button(janela,text="Registrar Pessoa",bg="black",fg="white",width=25,command=registro_pessoal)
+# btn_registrar.grid(row=2, column=0, columnspan=2, pady=20)
 
-btn_fechar = tk.Button(janela, text="fechar" , command=janela.destroy)
-btn_fechar.grid(row=5, column=0, pady=15)
+# btn_fechar = tk.Button(janela, text="fechar" , command=janela.destroy)
+# btn_fechar.grid(row=5, column=0, pady=15)
+
+# janela.mainloop()
+
+
+from tkinter import *
+
+janela = Tk()
+janela.title("Classificador de Lotes")
+janela.geometry("300x200")
+
+def classificar_lote():
+    codigo = campo_codigo.get()
+    if codigo.startswith("A"):
+        resultado.config(text="Alimentos")
+    elif codigo.startswith("E"):
+        resultado.config(text="Eletrônicos")
+    else:
+        resultado.config(text="Desconhecido")
+
+label_codigo = Label(janela, text="Código do Produto:")
+label_codigo.pack()
+
+campo_codigo = Entry(janela)
+campo_codigo.pack()
+
+botao_classificar = Button(janela, text="Classificar", command=classificar_lote)
+botao_classificar.pack()
+
+resultado = Label(janela, text="")
+resultado.pack()
 
 janela.mainloop()

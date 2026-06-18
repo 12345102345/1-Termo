@@ -18,25 +18,29 @@
 # ○ Se o setor for "Trabalho em Altura", liste o cinturão de segurança e
 # # talabarte.
 
-print("Ola, seja bem-vindo ao sistema de cadastro de treinamentos da empresa!")
-nome = input("Qual é seu nome? ( digite o nome completo ) ")
-setor = input("Digite o setor onde você trabalha:" "(eletrica/Trabalho em altura)")
-eletrica = print("você deve usar luvas de alta tensão e botas dielétricas")
-trabalho_altura = print("você deve usar liste o cinturão de segurança e talabarte")
-treinamentos = input("você ja realizou algum dos treinamento a seguir? (NR-10, NR-35 e Brigada) (responda com sim ou nao)")
+print("Olá! Seja bem-vindo ao sistema de cadastro de treinamentos da empresa!")
+nome = input("Qual é seu nome?(digite o nome completo): ")
+setor = input("Digite o setor onde você trabalha:" "(elétrica/trabalho em altura)") 
+if setor == "elétrica" :
+    print("Você deve usar luvas de alta tensão e botas dielétricas")
+elif setor == "trabalho em altura":
+    print("Você deve usar o cinturão de segurança e talabarte")
+treinamentos1 = input("Você ja realizou o treinamento NR-10? (sim/nao):")
+treinamentos2 = input("Você ja realizou o treinamento NR-35? (sim/nao):")
+treinamentos3 = input("Você ja realizou o treinamento da Brigada? (sim/nao):")
+if treinamentos1 == "sim" and treinamentos2 == "sim" and treinamentos3 == "sim":
+    brigada = int(input("Qual foi o ano que você realizou o treinamento da brigada?: "))
+    ano = int(input("Qual é o ano atual?: "))
+    total_anos = ano - brigada
+    if total_anos >= 2:
+        print("Você precisa renovar o treinamento da brigada")
+    else:
+        print("Seu treinamento da brigada está válido") 
+        print(f"Cadastro realizado com sucesso, {nome}do setor de {setor} ")
+else:
+    print("Cadastro não realizado, por favor realize os treinamentos necessários")
 
-if treinamentos == "sim":
-    print("ok!")
-    treinamento_realizado = input("Qual foi o treinamento realizado?")
-    print("verificando os dados cadastrados...")
-    opcao = input("você você possui mais de 2 anos de treinamento? (sim/não)")
-    if opcao == "sim":
-        print("Treinamento vencido! encaminhar para reciclagem.")
 
-if opcao == "nao" :
-    print("Treinamento Valido")
 
     
 
-
-opcao = "nao"
